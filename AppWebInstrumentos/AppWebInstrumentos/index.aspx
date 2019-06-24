@@ -79,7 +79,7 @@
                                             <br />
                                             <asp:Label ID="Label3" runat="server" Text='<%# Eval("cantidadporu") %>'></asp:Label>
                                             <br />
-           <%--                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("proveedor") %>'></asp:Label>--%>
+                                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("nombremarca") %>'></asp:Label>
                                             <br />
 <%--                                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("categoria") %>'></asp:Label>
                                             <br />
