@@ -11,6 +11,7 @@ public partial class AgregarProducto : System.Web.UI.Page
 {
     consultasALSE datos = new consultasALSE();
     consultasALSE datos1 = new consultasALSE();
+    consultasALSE datos2 = new consultasALSE();
     conexionALSE con = new conexionALSE();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -18,11 +19,19 @@ public partial class AgregarProducto : System.Web.UI.Page
         {
             listaMarcas();
             listaCategorias();
+            listaTipo();
         }
         deshabilitar(false);
         btnGuardar.Enabled = false;
         btnmodificar.Enabled = true;
         btnnuevo.Enabled = true;
+    }
+    public void listaTipo()
+    {
+        lsttipo.DataSource = datos2.extrae("listaTipo");
+        lsttipo.DataTextField = "tipo1";
+        lsttipo.DataValueField = "idTipo";
+        lsttipo.DataBind();
     }
     public void listaMarcas()
     {
@@ -47,6 +56,7 @@ public partial class AgregarProducto : System.Web.UI.Page
         cmd.Parameters.Add("@nombreProducto", SqlDbType.VarChar).Value = txtNombre.Text;
         cmd.Parameters.Add("@idMarca", SqlDbType.Int).Value = lstMarcas.SelectedValue;
         cmd.Parameters.Add("@idCategoria", SqlDbType.Int).Value = lstCategoria.SelectedValue;
+        cmd.Parameters.Add("@idTipo", SqlDbType.Int).Value = lsttipo.SelectedValue;
         cmd.Parameters.Add("@cantidadPorUnidad", SqlDbType.VarChar).Value = txtCantidad.Text.ToString();
         cmd.Parameters.Add("@precioUnidad", SqlDbType.Money).Value = double.Parse(txtPrecio.Text.ToString());
         cmd.Parameters.Add("@unidadesEnExistencia", SqlDbType.Int).Value = int.Parse(txtUniExis.Text.ToString());
@@ -71,6 +81,7 @@ public partial class AgregarProducto : System.Web.UI.Page
         cmd.Parameters.Add("@nombreProducto", SqlDbType.VarChar).Value = txtNombre.Text;
         cmd.Parameters.Add("@idProveedor", SqlDbType.Int).Value = lstMarcas.SelectedValue;
         cmd.Parameters.Add("@idCategoria", SqlDbType.Int).Value = lstCategoria.SelectedValue;
+        cmd.Parameters.Add("@idTipo", SqlDbType.Int).Value = lsttipo.SelectedValue;
         cmd.Parameters.Add("@cantidadPorUnidad", SqlDbType.VarChar).Value = txtCantidad.Text.ToString();
         cmd.Parameters.Add("@precioUnidad", SqlDbType.Money).Value = double.Parse(txtPrecio.Text.ToString());
         cmd.Parameters.Add("@unidadesEnExistencia", SqlDbType.Int).Value = int.Parse(txtUniExis.Text.ToString());
@@ -130,15 +141,16 @@ public partial class AgregarProducto : System.Web.UI.Page
         txtNombre.Text = tabla.Rows[0][1].ToString();
         lstMarcas.SelectedItem.Text = tabla.Rows[0][2].ToString();
         lstCategoria.SelectedItem.Text = tabla.Rows[0][3].ToString();
-        txtCantidad.Text = tabla.Rows[0][4].ToString();
-        txtPrecio.Text = tabla.Rows[0][5].ToString();
-        txtUniExis.Text = tabla.Rows[0][6].ToString();
-        txtUniPedid.Text = tabla.Rows[0][7].ToString();
-        txtnivel.Text = tabla.Rows[0][8].ToString();
-        if (tabla.Rows[0][9].ToString() == "1") chksuspendido.Checked = true;
+        lsttipo.SelectedItem.Text = tabla.Rows[0][4].ToString();
+        txtCantidad.Text = tabla.Rows[0][5].ToString();
+        txtPrecio.Text = tabla.Rows[0][6].ToString();
+        txtUniExis.Text = tabla.Rows[0][7].ToString();
+        txtUniPedid.Text = tabla.Rows[0][8].ToString();
+        txtnivel.Text = tabla.Rows[0][9].ToString();
+        if (tabla.Rows[0][10].ToString() == "1") chksuspendido.Checked = true;
         else chksuspendido.Checked = false;
-        txtserie.Text = tabla.Rows[0][10].ToString();
-        imgproducto.ImageUrl = tabla.Rows[0][11].ToString();
+        txtserie.Text = tabla.Rows[0][11].ToString();
+        imgproducto.ImageUrl = tabla.Rows[0][12].ToString();
     }
 
     public void deshabilitar(Boolean estado)
@@ -146,6 +158,7 @@ public partial class AgregarProducto : System.Web.UI.Page
         txtIDProduct.Enabled = estado;
         txtNombre.Enabled = estado;
         lstCategoria.Enabled = estado;
+        lsttipo.Enabled = estado;
         lstMarcas.Enabled = estado;
         txtCantidad.Enabled = estado;
         txtPrecio.Enabled = estado;
@@ -182,6 +195,7 @@ public partial class AgregarProducto : System.Web.UI.Page
         txtIDProduct.Text = string.Empty;
         txtNombre.Text = string.Empty;
         lstCategoria.ClearSelection();
+        lsttipo.ClearSelection();
         lstMarcas.ClearSelection();
         txtCantidad.Text = string.Empty;
         txtPrecio.Text = string.Empty;

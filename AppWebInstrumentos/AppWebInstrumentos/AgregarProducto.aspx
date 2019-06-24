@@ -27,6 +27,10 @@
         Categorias:<asp:DropDownList ID="lstCategoria" runat="server">
         </asp:DropDownList>
         <br />
+    Tipo:
+    <asp:DropDownList ID="lsttipo" runat="server">
+    </asp:DropDownList>
+        <br />
         Cantidad Por Unidad:
         <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
         <br />
