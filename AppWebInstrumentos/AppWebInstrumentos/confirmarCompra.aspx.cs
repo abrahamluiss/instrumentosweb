@@ -118,12 +118,8 @@ public partial class confirmarCompra : System.Web.UI.Page
         cmd.Connection.Close();
         int idp = Convert.ToInt32(cmd.Parameters["@idpedido"].Value);
         return idp;
-
     }
 
 
-    protected void btnautocompletar_Click(object sender, EventArgs e)
-    {
-        rellenarxdestinatario();
-    }
+
 }

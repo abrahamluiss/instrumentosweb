@@ -34,6 +34,15 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td></td>
+                <td class="auto-style1">Pedido ID:</td>
+                <td class="auto-style2">
+                    <asp:Label ID="lblidpedido" runat="server" Text="Label"></asp:Label>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
                 <td class="auto-style1">Cliente ID:</td>
                 <td class="auto-style2">
                     <asp:Label ID="lblidCliente" runat="server" Text="Label"></asp:Label>
@@ -41,13 +50,16 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td></td>
                 <td class="auto-style1">Moneda:</td>
                 <td class="auto-style2">
-                    <asp:Label ID="lblMoneda" runat="server" Text="Soles"></asp:Label>
+                    <asp:DropDownList ID="lstmonedas" runat="server">
+                    </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td></td>
                 <td class="auto-style1">Comisión:</td>
                  <td class="auto-style2">
                      <asp:Label ID="lblComision" runat="server" Text="Label"></asp:Label>
@@ -55,46 +67,51 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td></td>
                 <td class="auto-style1">Tipo De Tarjeta: </td>
                  <td class="auto-style2">
-                     <asp:DropDownList ID="lblTipoTarj" runat="server">
+                     <asp:DropDownList ID="lstTipoTarj" runat="server">
                      </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
                         <tr>
+                            <td></td>
                 <td class="auto-style1">Número de tarjeta: </td>
                  <td class="auto-style2">
-                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="txtNumTarj" runat="server"></asp:TextBox>
                             </td>
                 <td>&nbsp;</td>
             </tr>
                         <tr>
+                            <td></td>
                 <td class="auto-style1">Nombre del titular:</td>
                  <td class="auto-style2">
-                     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="txtTitular" runat="server"></asp:TextBox>
                             </td>
                 <td>&nbsp;</td>
             </tr>
                         <tr>
+                            <td></td>
                 <td class="auto-style4">Fecha de Caducidad: </td>
                  <td class="auto-style5">Año:
-                     <asp:TextBox ID="TextBox4" runat="server" Width="75px"></asp:TextBox>
+                     <asp:TextBox ID="txtanio" runat="server" Width="75px"></asp:TextBox>
                             </td>
-                <td class="auto-style6">Mes:<asp:TextBox ID="TextBox5" runat="server" Width="60px"></asp:TextBox>
+                <td class="auto-style6">Mes:<asp:TextBox ID="txtmes" runat="server" Width="60px"></asp:TextBox>
                             </td>
             </tr>
                         <tr>
+                            <td></td>
                 <td class="auto-style1">CVC/CVV</td>
                  <td class="auto-style2">
-                     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="txtcvv" runat="server"></asp:TextBox>
                             </td>
                 <td>&nbsp;</td>
             </tr>
         </table>
     </p>
     <p>
-        <asp:Button ID="btnpagar" runat="server" CssClass="active" Text="Pagar" />
+        <asp:Button ID="btnpagar" runat="server" CssClass="active" Text="Pagar" OnClick="btnpagar_Click" />
 </p>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" Runat="Server">
