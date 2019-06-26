@@ -9,8 +9,7 @@ using System.Data.SqlClient;
 
 public partial class carrito : System.Web.UI.Page
 {
-
-    consultasALSE dato = new consultasALSE();
+    consultasALSE datos= new consultasALSE();
     conexionALSE con = new conexionALSE();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -49,7 +48,7 @@ public partial class carrito : System.Web.UI.Page
 
     protected void btnConfirmar_Click(object sender, EventArgs e)
     {
-        Session["iduser"] = "Abraham";
+        Session["iduser"] = "1";
         Response.Redirect("~/confirmarCompra");
     }
 
@@ -60,7 +59,7 @@ public partial class carrito : System.Web.UI.Page
 
     public void mostrarcarrito()
     {
-        grdproductos.DataSource = dato.extrae("get_tmpdetalle", "@idpedido", (int)Session["idpedido"]);
+        grdproductos.DataSource = datos.extrae("get_tmpdetalle", "@idpedido", (int)Session["idpedido"]);
         grdproductos.DataBind();
     }
 
@@ -126,5 +125,8 @@ public partial class carrito : System.Web.UI.Page
 
     protected void grdproductos_RowDataBound(object sender, GridViewRowEventArgs e)
     {
+        //((BoundField)grdproductos.Columns[1]).ReadOnly = true;
+        //((BoundField)grdproductos.Columns[2]).ReadOnly = true;
+        //((BoundField)grdproductos.Columns[3]).ReadOnly = true;
     }
 }

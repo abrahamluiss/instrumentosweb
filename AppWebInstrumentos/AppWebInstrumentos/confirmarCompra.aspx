@@ -70,7 +70,7 @@
     <asp:Label ID="lbltotalpagar" runat="server"></asp:Label>
     <br />
     <br />
-    <asp:Button ID="btnPago" runat="server" OnClick="btnComprar_Click" Text="Efectuar Pago" />
+    <asp:Button ID="btnPago" runat="server" OnClick="btnComprar_Click" Text="Efectuar Pago" CssClass="btn btn-primary sweet-8" />
     <br />
     <br />
     <br />

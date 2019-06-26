@@ -20,11 +20,10 @@ public partial class confirmarCompra : System.Web.UI.Page
     {
 
         string idUsuario = Session["iduser"].ToString();
-        if (idUsuario.Trim().Length > 3)
-        {
+        
             mostrarDatos(idUsuario);
             monto(Convert.ToInt32(Session["idpedido"].ToString()));
-        }
+        
     }
 
     public void mostrarDatos(string idusuar)
@@ -72,7 +71,7 @@ public partial class confirmarCompra : System.Web.UI.Page
 
         insertadetalle(newIdPedido);
 
-        Session["iduser"] = "Abraham";
+        Session["iduser"] = "1";
         Response.Write("<Script>alert('Se esta efectuando la compra');window.location.href='EfectuarPago.aspx'</script>");
         //Response.Redirect("~/reportepedido");
 

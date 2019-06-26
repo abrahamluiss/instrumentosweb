@@ -18,7 +18,7 @@ public partial class index : System.Web.UI.Page
         {
             masvendido();
             Session["idpedido"] = 0;
-            Session["iduser"] = "Abraham";
+            Session["iduser"] = "1";
 
         }
     }
