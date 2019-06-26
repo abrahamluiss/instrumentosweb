@@ -36,6 +36,7 @@ public partial class index : System.Web.UI.Page
             int idprod = int.Parse(dataproductos.DataKeys[e.Item.ItemIndex].ToString());
             Session["idproduct"] = idprod;
             Response.Redirect("~/DetalleProducto.aspx");
+            
         }
         if (e.CommandName == "agregarcarro")
         {

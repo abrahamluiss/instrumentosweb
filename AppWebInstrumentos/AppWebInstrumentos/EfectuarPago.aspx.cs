@@ -15,7 +15,7 @@ public partial class EfectuarPago : System.Web.UI.Page
     consultasALSE datos3 = new consultasALSE();
     consultasALSE datos4 = new consultasALSE();
     conexionALSE cn = new conexionALSE();
-
+        
     protected void Page_Load(object sender, EventArgs e)
     {
         string idUsuario = Session["iduser"].ToString();
