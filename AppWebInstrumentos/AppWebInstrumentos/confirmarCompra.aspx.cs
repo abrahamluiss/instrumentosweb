@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 
-public partial class confirmarcompra : System.Web.UI.Page
+public partial class confirmarCompra : System.Web.UI.Page
 {
 
     consultasALSE datos = new consultasALSE();
@@ -32,8 +32,6 @@ public partial class confirmarcompra : System.Web.UI.Page
         DataTable dt = new DataTable();
         lblidpedido.Text = Session["idpedido"].ToString();
         lblidcliente.Text = Session["iduser"].ToString();
-        lblidempleado.Text = "NNN";
-
         lblfechapedido.Text = fecha.ToString();
         lblfechaentrega.Text = fecha.AddDays(2).ToString();
         lblfechaenvio.Text = fecha.AddDays(1).ToString();
@@ -41,13 +39,6 @@ public partial class confirmarcompra : System.Web.UI.Page
         lstformaenvio.DataTextField = "NombreCompañia";
         lstformaenvio.DataValueField = "idCompañiaEnvios";
         lstformaenvio.DataBind();
-        dt = datos4.extrae("getListadestinatarios");
-        lstdestinatario.DataSource = dt;
-        lstdestinatario.DataTextField = "nom";
-        lstdestinatario.DataValueField = "NombreContacto";
-        lstdestinatario.DataBind();
-
-
 
     }
     public void monto(int idtemp)
@@ -66,7 +57,7 @@ public partial class confirmarcompra : System.Web.UI.Page
     public void rellenarxdestinatario()
     {
         DataTable dt3 = new DataTable();
-        dt3 = datos3.extrae(lstdestinatario.SelectedItem.Value.ToString(), "@nombrecont", "getListadestinatariosxid");
+        txtnombre.Text = dt3.Rows[0][3].ToString();
         txtdirecciondestinatario.Text = dt3.Rows[0][4].ToString();
         txtciudaddestino.Text = dt3.Rows[0][5].ToString();
         txtregiondestinatario.Text = dt3.Rows[0][6].ToString();
@@ -81,16 +72,13 @@ public partial class confirmarcompra : System.Web.UI.Page
 
         insertadetalle(newIdPedido);
 
-        Session["iduser"] = "ANTON";
-        Response.Write("<Script>alert('Compra realizada');window.location.href='reportepedido.aspx'</script>");
+        Session["iduser"] = "Abraham";
+        Response.Write("<Script>alert('Se esta efectuando la compra');window.location.href='EfectuarPago.aspx'</script>");
         //Response.Redirect("~/reportepedido");
 
     }
     public void insertadetalle(int idpedidonuevo)
     {
-        //        ins_detalle
-        //@idpedidonuevo int,
-        //@idpedidotemp int
 
         SqlCommand cmd = new SqlCommand();
         SqlDataAdapter da = new SqlDataAdapter();
@@ -116,13 +104,11 @@ public partial class confirmarcompra : System.Web.UI.Page
         codigo.Direction = ParameterDirection.Output;
         cmd.Parameters.Add(codigo);
         cmd.Parameters.Add("@IdCliente", SqlDbType.NChar).Value = Session["iduser"];
-        cmd.Parameters.Add("@IdEmpleado", SqlDbType.Int).Value = 1;
         cmd.Parameters.Add("@FechaPedido", SqlDbType.DateTime).Value = fecha;
         cmd.Parameters.Add("@FechaEntrega", SqlDbType.DateTime).Value = fecha.AddDays(2);
         cmd.Parameters.Add("@FechaEnvio", SqlDbType.DateTime).Value = fecha.AddDays(1);
         cmd.Parameters.Add("@FormaEnvio", SqlDbType.Int).Value = int.Parse(lstformaenvio.SelectedItem.Value);
-        cmd.Parameters.Add("@cargo", SqlDbType.Decimal).Value = double.Parse(lblcargo.Text.ToString());
-        cmd.Parameters.Add("@Destinatario", SqlDbType.NVarChar).Value = lstdestinatario.SelectedItem.Value;
+        cmd.Parameters.Add("@Destinatario", SqlDbType.NVarChar).Value = txtnombre.Text.ToString();
         cmd.Parameters.Add("@DireccionDestinatario", SqlDbType.NVarChar).Value = txtdirecciondestinatario.Text.ToString();
         cmd.Parameters.Add("@CiudadDestinatario", SqlDbType.NVarChar).Value = txtciudaddestino.Text.ToString();
         cmd.Parameters.Add("@RegionDestinatario", SqlDbType.NVarChar).Value = txtregiondestinatario.Text.ToString();

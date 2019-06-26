@@ -49,7 +49,7 @@ public partial class carrito : System.Web.UI.Page
 
     protected void btnConfirmar_Click(object sender, EventArgs e)
     {
-        Session["iduser"] = "ANTON";
+        Session["iduser"] = "Abraham";
         Response.Redirect("~/confirmarCompra");
     }
 

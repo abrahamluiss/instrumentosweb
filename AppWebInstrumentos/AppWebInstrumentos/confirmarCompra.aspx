@@ -12,12 +12,7 @@
         <div class="fila">
     IdCliente
     <asp:Label ID="lblidcliente" runat="server"></asp:Label>
-    <br />
-            </div>
-        <div class="fila">
-    IdEmpleado
-    <asp:Label ID="lblidempleado" runat="server"></asp:Label>
-    <br />
+            <br />
             </div>
         <div class="fila">
     FechaPedido
@@ -42,11 +37,7 @@
             </div>
         <div class="fila">
     Destinatario
-    <asp:DropDownList ID="lstdestinatario" runat="server" OnSelectedIndexChanged="lstdestinatario_SelectedIndexChanged" AppendDataBoundItems="True">
-    </asp:DropDownList>
-&nbsp;Cargo
-    <asp:Label ID="lblcargo" runat="server">1.00</asp:Label>
-    <br />
+            <asp:TextBox ID="txtnombre" runat="server"></asp:TextBox>
     <br />
             </div>
         <div class="fila">
@@ -79,7 +70,7 @@
     <asp:Label ID="lbltotalpagar" runat="server"></asp:Label>
     <br />
     <br />
-    <asp:Button ID="btnComprar" runat="server" OnClick="btnComprar_Click" Text="Efectuar Compra" />
+    <asp:Button ID="btnPago" runat="server" OnClick="btnComprar_Click" Text="Efectuar Pago" />
     <br />
     <br />
     <br />
